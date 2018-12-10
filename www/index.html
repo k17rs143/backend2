@@ -44,7 +44,7 @@
       .catch(function(error){
         $("#display").removeClass();
         $("#display").addClass("bg-warning");
-        $("#display").html("delete fail:" + JSON.stringify(error));
+        $("#display").html("delete fail:" +JSON.stringify(error));
       })
     }
 
@@ -70,7 +70,7 @@
       .then(function(uTdata){
        var value = parseInt$("#update").val();
        uTdata.set(key,value);
-       return uTdata();
+       return uTdata.update();
       })
       .then(function(results){
         $("#display").removeClass();
@@ -87,6 +87,17 @@
     
 
     function countData() {
+      UTdata.count().fetchAll()
+      .then(function(results){
+        $("#display").removeClass();
+        $("#display").addClass("bg-success");
+        $("#display").html("count fail:"+JSON.stringfy(Error));
+      })
+      .catch(function(error){
+        $("#display").removeClass();
+        $("#display").addClass("bg-warning");
+        $("#display").html("count fail:"+JSON.stringfy(error));
+      })
     }
 
     function sortData() {
